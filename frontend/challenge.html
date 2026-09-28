@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Challenge — Non-Literal Language Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary-fixed": "#a2eeff",
+            "primary-container": "#8c80ff",
+            "surface-dim": "#051424",
+            "on-error-container": "#ffdad6",
+            "on-primary": "#2800a0",
+            "on-tertiary-fixed": "#002114",
+            "surface-container": "#122131",
+            "on-surface-variant": "#c8c4d7",
+            "on-primary-container": "#22008d",
+            "on-background": "#d4e4fa",
+            "on-primary-fixed-variant": "#3f25c1",
+            "on-tertiary-fixed-variant": "#005137",
+            "surface-container-lowest": "#010f1f",
+            "tertiary-fixed-dim": "#45dfa4",
+            "secondary": "#5de6ff",
+            "error-container": "#93000a",
+            "surface": "#051424",
+            "surface-bright": "#2c3a4c",
+            "surface-container-low": "#0d1c2d",
+            "inverse-primary": "#5845d9",
+            "primary-fixed": "#e4dfff",
+            "outline-variant": "#474554",
+            "surface-tint": "#c6bfff",
+            "tertiary-container": "#00a574",
+            "on-secondary-fixed-variant": "#004e5a",
+            "tertiary-fixed": "#68fcbf",
+            "on-tertiary": "#003825",
+            "surface-variant": "#273647",
+            "outline": "#928ea0",
+            "on-secondary-fixed": "#001f25",
+            "on-tertiary-container": "#003120",
+            "error": "#ffb4ab",
+            "on-primary-fixed": "#160066",
+            "background": "#051424",
+            "secondary-container": "#00cbe6",
+            "on-secondary": "#00363e",
+            "inverse-on-surface": "#233143",
+            "surface-container-high": "#1c2b3c",
+            "on-surface": "#d4e4fa",
+            "surface-container-highest": "#273647",
+            "primary": "#c6bfff",
+            "on-error": "#690005",
+            "primary-fixed-dim": "#c6bfff",
+            "tertiary": "#45dfa4",
+            "secondary-fixed-dim": "#2fd9f4",
+            "on-secondary-container": "#00515d",
+            "inverse-surface": "#d4e4fa"
+          },
+          borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" },
+          spacing: {
+            "space-xl": "2.5rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "margin-desktop": "2rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "gutter-desktop": "1.5rem"
+          },
+          fontFamily: {
+            "headline-md": ["Inter"],
+            "mono-md": ["JetBrains Mono"],
+            "mono-sm": ["JetBrains Mono"],
+            "display-lg-mobile": ["Inter"],
+            "display-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-caps": ["JetBrains Mono"],
+            "headline-lg": ["Inter"],
+            "mono-lg": ["JetBrains Mono"],
+            "body-sm": ["Inter"]
+          }
+        }
+      }
+    };
+  </script>
+  <script src="js/api.js"></script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+  <aside class="fixed left-0 top-0 h-full w-72 bg-surface-container z-50 flex flex-col justify-between border-r border-outline-variant">
+    <div class="flex flex-col">
+      <div class="p-space-md border-b border-outline-variant">
+        <div class="flex items-center gap-space-sm mb-space-xs">
+          <img alt="Non-Literal Language Lab Logo" class="h-8 w-auto object-contain" src="logo.svg"/>
+          <div class="flex flex-col">
+            <span class="font-headline-sm text-headline-sm uppercase text-on-surface tracking-tight leading-tight">NON-LITERAL<br/>LANGUAGE LAB</span>
+          </div>
+        </div>
+        <div class="mt-space-xs">
+          <span class="font-label-caps text-label-caps uppercase text-secondary tracking-widest">Beyond literal meaning.</span>
+        </div>
+      </div>
+      <nav class="flex flex-col p-space-sm gap-space-xs">
+        <a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-colors font-mono-md text-mono-md" href="analyzer.html">Analyzer</a>
+        <a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-colors font-mono-md text-mono-md" href="context_lab.html">Context Lab</a>
+        <a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-colors font-mono-md text-mono-md" href="idiom_lab.html">Idiom Lab</a>
+        <a aria-current="page" class="flex items-center px-space-md py-space-sm rounded transition-colors font-mono-md bg-surface-variant text-primary border-l-2 border-primary-container" href="challenge.html">Challenge</a>
+      </nav>
+    </div>
+    <div class="p-space-md border-t border-outline-variant bg-surface-container-low">
+      <div class="flex items-center justify-between">
+        <span class="font-mono-sm text-mono-sm text-on-surface-variant">Local NLP</span>
+        <div class="flex items-center gap-space-xs">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="pl-72">
+    <header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant z-40 flex items-center justify-between px-gutter-desktop">
+      <div class="flex items-center gap-space-md">
+        <div class="flex items-center gap-space-xs">
+          <span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-variant border border-outline-variant font-mono-sm text-mono-sm text-tertiary" id="header-status-pill">
+            <span class="h-1.5 w-1.5 rounded-full bg-tertiary"></span>
+            <span id="header-status-text">Ready</span>
+          </span>
+        </div>
+      </div>
+      <div class="flex items-center gap-space-sm">
+        <button class="w-8 h-8 rounded border border-outline-variant bg-surface-container hover:bg-surface-variant text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-colors" title="Settings">
+          <span class="material-symbols-outlined text-[18px]">settings</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="w-full pt-16 bg-surface-container-lowest min-h-screen px-margin-desktop py-space-lg">
+      <div class="flex flex-col w-full">
+        <!-- Page Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between pb-space-lg mb-space-lg border-b border-outline-variant/30 gap-space-md">
+          <div class="flex flex-col gap-space-xs">
+            <div class="flex items-center gap-space-xs">
+              <span class="px-space-sm py-0.5 rounded bg-surface-container font-label-caps text-label-caps text-secondary tracking-widest uppercase">Phase 12 Active</span>
+              <span class="font-mono-sm text-mono-sm text-outline">/</span>
+              <span class="font-mono-sm text-mono-sm text-on-surface-variant">SQLite Feedback Store</span>
+            </div>
+            <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Challenge the Model</h1>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Review model predictions and record human evaluation feedback into local SQLite.</p>
+          </div>
+
+          <div class="flex items-center gap-space-xs bg-tertiary/10 border border-tertiary/30 px-space-md py-space-xs rounded-lg text-tertiary font-mono-sm text-mono-sm">
+            <span class="material-symbols-outlined text-[18px]">database</span>
+            <span>SQLite Connected (backend/lab.db)</span>
+          </div>
+        </div>
+
+        <!-- Error Alert -->
+        <div id="error-container" class="hidden mb-space-md p-space-sm rounded-lg bg-error-container/30 border border-error text-error font-mono-sm text-mono-sm flex items-center gap-space-xs">
+          <span class="material-symbols-outlined text-[18px]">error</span>
+          <span id="error-message"></span>
+        </div>
+
+        <!-- Main Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-start">
+          <!-- Left Column -->
+          <div class="lg:col-span-8 flex flex-col gap-space-lg">
+            <section class="bg-surface-container rounded-xl p-space-lg flex flex-col gap-space-md shadow-md relative overflow-hidden">
+              <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-tertiary"></div>
+              <div class="flex items-center justify-between pb-space-xs">
+                <div class="flex items-center gap-space-xs">
+                  <span class="h-2 w-2 rounded-full bg-secondary"></span>
+                  <span class="font-label-caps text-label-caps uppercase text-secondary tracking-wider">Evaluation Candidate</span>
+                </div>
+                <span class="font-mono-sm text-mono-sm text-on-surface-variant px-space-sm py-0.5 rounded bg-surface-container-lowest">Confidence: <span id="pred-confidence">—</span></span>
+              </div>
+
+              <div class="bg-surface-container-lowest rounded-lg p-space-lg flex flex-col gap-space-sm">
+                <span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Sentence Under Review</span>
+                <blockquote class="font-headline-md text-headline-md text-on-surface tracking-normal leading-relaxed italic" id="challenge-sentence-text">
+                  “I absolutely LOVE waiting three hours for the bus.”
+                </blockquote>
+              </div>
+
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-surface-container-high/60 rounded-lg px-space-md py-space-sm gap-space-xs">
+                <div class="flex items-center gap-space-sm min-w-0">
+                  <span class="material-symbols-outlined text-secondary text-[18px] shrink-0">ac_unit</span>
+                  <div class="flex items-center gap-space-xs truncate">
+                    <span class="font-mono-sm text-mono-sm text-outline uppercase shrink-0">Context:</span>
+                    <span class="font-mono-md text-mono-md text-on-surface truncate" id="challenge-context-text">Standing in the freezing cold after a long shift.</span>
+                  </div>
+                </div>
+                <span class="font-mono-sm text-mono-sm text-secondary bg-secondary/10 px-space-sm py-0.5 rounded self-start sm:self-auto shrink-0">Environmental Shift</span>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm pt-space-xs">
+                <div class="bg-surface-container-low rounded-lg p-space-md flex flex-col justify-between gap-space-xs">
+                  <span class="font-label-caps text-label-caps uppercase text-outline">Model Prediction</span>
+                  <div class="flex items-center gap-space-sm">
+                    <span class="inline-flex items-center gap-1.5 px-space-md py-1 rounded bg-secondary/15 text-secondary font-mono-md text-mono-md font-semibold capitalize" id="pred-label">
+                      <span class="material-symbols-outlined text-[16px]">psychology</span>
+                      Loading...
+                    </span>
+                  </div>
+                </div>
+
+                <div class="bg-surface-container-low rounded-lg p-space-md flex flex-col justify-between gap-space-xs">
+                  <span class="font-label-caps text-label-caps uppercase text-outline">Surface Sentiment</span>
+                  <div class="flex items-center gap-space-sm">
+                    <span class="inline-flex items-center gap-1.5 px-space-md py-1 rounded bg-primary/15 text-primary font-mono-md text-mono-md capitalize" id="pred-sentiment">
+                      <span class="material-symbols-outlined text-[16px]">mood</span>
+                      Loading...
+                    </span>
+                  </div>
+                </div>
+
+                <div class="sm:col-span-2 bg-surface-container-low rounded-lg p-space-md flex flex-col gap-space-xs">
+                  <div class="flex items-center justify-between">
+                    <span class="font-label-caps text-label-caps uppercase text-outline">Predicted Latent Interpretation</span>
+                    <span class="font-mono-sm text-mono-sm text-tertiary flex items-center gap-1">
+                      <span class="material-symbols-outlined text-[14px]">psychology</span>
+                      FastAPI Pipeline
+                    </span>
+                  </div>
+                  <p class="font-body-md text-body-md text-on-surface leading-normal" id="pred-interpretation">
+                    Fetching real inference from FastAPI backend...
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <!-- User Feedback Section -->
+            <section class="bg-surface-container rounded-xl p-space-lg flex flex-col gap-space-md shadow-md">
+              <div class="flex flex-col gap-space-xs">
+                <h2 class="font-headline-sm text-headline-sm text-on-surface">Was this prediction correct?</h2>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Validate if the model accurately resolved pragmatic polarity inversion and contextual clues.</p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md" id="decision-buttons">
+                <button class="group relative flex items-center justify-center gap-space-sm px-space-lg py-3 rounded-lg bg-surface-container-high hover:bg-tertiary-container/30 text-on-surface hover:text-tertiary transition-all" id="btn-correct">
+                  <span class="material-symbols-outlined text-[20px] text-tertiary">check_circle</span>
+                  <span class="font-mono-lg text-mono-lg font-semibold tracking-wide">✓ Correct</span>
+                </button>
+                <button class="group relative flex items-center justify-center gap-space-sm px-space-lg py-3 rounded-lg bg-surface-container-high hover:bg-error-container/30 text-on-surface hover:text-error transition-all" id="btn-incorrect">
+                  <span class="material-symbols-outlined text-[20px] text-error">cancel</span>
+                  <span class="font-mono-lg text-mono-lg font-semibold tracking-wide">✕ Incorrect</span>
+                </button>
+              </div>
+
+              <div class="flex flex-col gap-space-xs pt-space-xs">
+                <div class="flex justify-between items-center">
+                  <label class="font-label-caps text-label-caps uppercase text-on-surface-variant" for="feedback-input">Tell us what the model got wrong... (Optional)</label>
+                  <span class="font-mono-sm text-mono-sm text-outline">Max 500 chars</span>
+                </div>
+                <div class="relative w-full">
+                  <textarea class="w-full bg-surface-container-lowest text-on-surface font-mono-md text-mono-md placeholder:text-outline/50 p-space-md rounded-lg resize-y focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" id="feedback-input" maxlength="500" placeholder="E.g., missed subtle hyperbole, misclassified idiom, or inverted sentiment incorrectly..." rows="3"></textarea>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between pt-space-xs">
+                <span class="font-mono-sm text-mono-sm text-outline flex items-center gap-1.5" id="validation-hint">
+                  <span class="material-symbols-outlined text-[16px]">touch_app</span>
+                  Select an assessment above to unlock submission
+                </span>
+                <button class="px-space-lg py-2.5 rounded-lg bg-surface-variant text-outline cursor-not-allowed font-mono-md text-mono-md transition-all flex items-center gap-space-xs opacity-60" disabled id="btn-submit">
+                  <span class="material-symbols-outlined text-[18px]">send</span>
+                  <span id="btn-submit-text">Submit Evaluation</span>
+                </button>
+              </div>
+
+              <!-- Confirmation Banner -->
+              <div class="hidden bg-tertiary/10 border border-tertiary/30 rounded-lg p-space-md flex items-center justify-between text-tertiary" id="success-banner">
+                <div class="flex items-center gap-space-sm">
+                  <span class="material-symbols-outlined text-[20px]">task_alt</span>
+                  <span class="font-mono-md text-mono-md" id="success-banner-msg">Evaluation saved to local SQLite database!</span>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Right Column: Statistics & SQLite History -->
+          <div class="lg:col-span-4 flex flex-col gap-space-lg">
+            <div class="bg-surface-container rounded-xl p-space-lg flex flex-col gap-space-md shadow-md">
+              <div class="flex items-center justify-between border-b border-outline-variant/30 pb-space-xs">
+                <span class="font-label-caps text-label-caps uppercase text-on-surface-variant">Benchmark Metrics</span>
+                <span class="font-mono-sm text-mono-sm text-tertiary">SQLite Store</span>
+              </div>
+              <div class="grid grid-cols-2 gap-space-sm">
+                <div class="p-space-sm rounded bg-surface-container-low flex flex-col">
+                  <span class="font-mono-sm text-mono-sm text-outline">Total Reviews</span>
+                  <span class="font-headline-md text-headline-md text-on-surface font-mono-md" id="stat-total">—</span>
+                </div>
+                <div class="p-space-sm rounded bg-surface-container-low flex flex-col">
+                  <span class="font-mono-sm text-mono-sm text-outline">Accuracy</span>
+                  <span class="font-headline-md text-headline-md text-tertiary font-mono-md" id="stat-accuracy">—</span>
+                </div>
+                <div class="p-space-sm rounded bg-surface-container-low flex flex-col">
+                  <span class="font-mono-sm text-mono-sm text-outline">Correct</span>
+                  <span class="font-headline-md text-headline-md text-tertiary font-mono-md" id="stat-correct">—</span>
+                </div>
+                <div class="p-space-sm rounded bg-surface-container-low flex flex-col">
+                  <span class="font-mono-sm text-mono-sm text-outline">Incorrect</span>
+                  <span class="font-headline-md text-headline-md text-error font-mono-md" id="stat-incorrect">—</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Submissions Log -->
+            <div class="bg-surface-container rounded-xl p-space-lg flex flex-col gap-space-md shadow-md">
+              <div class="flex items-center justify-between border-b border-outline-variant/30 pb-space-xs">
+                <span class="font-label-caps text-label-caps uppercase text-on-surface-variant">Recent Evaluations</span>
+                <span class="font-mono-sm text-mono-sm text-outline">SQLite Log</span>
+              </div>
+              <div class="flex flex-col gap-space-xs" id="submissions-log">
+                <span class="font-mono-sm text-mono-sm text-on-surface-variant">Loading recent evaluations...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (() => {
+      const sentenceText = "I absolutely LOVE waiting three hours for the bus.";
+      const contextText = "Standing in the freezing cold after a long shift.";
+
+      let selectedVerdict = null;
+      let currentPredictionLabel = "sarcastic";
+      let currentInterpretation = "";
+
+      const btnCorrect = document.getElementById("btn-correct");
+      const btnIncorrect = document.getElementById("btn-incorrect");
+      const btnSubmit = document.getElementById("btn-submit");
+      const btnSubmitText = document.getElementById("btn-submit-text");
+      const validationHint = document.getElementById("validation-hint");
+      const feedbackInput = document.getElementById("feedback-input");
+      const successBanner = document.getElementById("success-banner");
+      const errorContainer = document.getElementById("error-container");
+      const errorMessage = document.getElementById("error-message");
+
+      function showError(msg) {
+        if (!msg) {
+          errorContainer.classList.add("hidden");
+        } else {
+          errorMessage.textContent = msg;
+          errorContainer.classList.remove("hidden");
+        }
+      }
+
+      function formatNumber(val, decimals = 4) {
+        if (val === null || val === undefined || isNaN(val)) return "—";
+        return Number(val).toFixed(decimals);
+      }
+
+      function selectVerdict(verdict) {
+        selectedVerdict = verdict;
+        showError(null);
+
+        if (verdict === "correct") {
+          btnCorrect.className = "group relative flex items-center justify-center gap-space-sm px-space-lg py-3 rounded-lg bg-tertiary-container/30 text-tertiary ring-1 ring-tertiary transition-all";
+          btnIncorrect.className = "group relative flex items-center justify-center gap-space-sm px-space-lg py-3 rounded-lg bg-surface-container-high text-on-surface transition-all";
+          validationHint.innerHTML = `<span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span> Choice recorded: <strong class="uppercase font-mono-sm text-tertiary">CORRECT</strong>`;
+        } else {
+          btnIncorrect.className = "group relative flex items-center justify-center gap-space-sm px-space-lg py-3 rounded-lg bg-error-container/30 text-error ring-1 ring-error transition-all";
+          btnCorrect.className = "group relative flex items-center justify-center gap-space-sm px-space-lg py-3 rounded-lg bg-surface-container-high text-on-surface transition-all";
+          validationHint.innerHTML = `<span class="material-symbols-outlined text-[16px] text-error">cancel</span> Choice recorded: <strong class="uppercase font-mono-sm text-error">INCORRECT</strong>`;
+        }
+
+        btnSubmit.disabled = false;
+        btnSubmit.classList.remove("bg-surface-variant", "text-outline", "cursor-not-allowed", "opacity-60");
+        btnSubmit.classList.add("bg-primary-container", "text-on-primary-container", "hover:bg-primary", "cursor-pointer", "shadow-md");
+      }
+
+      async function loadModelPrediction() {
+        showError(null);
+        const res = await window.AppAPI.analyze(sentenceText, contextText);
+        if (!res.ok) {
+          showError(res.error);
+          return;
+        }
+
+        const data = res.data;
+        const evidenceList = data.evidence || [];
+        const interp = data.interpretation_summary || {};
+
+        let sarcasmEv = evidenceList.find(e => e.source === "sarcasm_classifier_distilbert") ||
+                        evidenceList.find(e => e.source === "sarcasm_classifier") || {};
+        let prob = sarcasmEv.sarcasm_model_probability !== undefined && sarcasmEv.sarcasm_model_probability !== null ? sarcasmEv.sarcasm_model_probability : interp.sarcasm_model_probability;
+        let label = sarcasmEv.value || "sarcastic";
+
+        currentPredictionLabel = label;
+        currentInterpretation = interp.interpretation || "Model-generated interpretation summary.";
+
+        document.getElementById("pred-confidence").textContent = formatNumber(prob, 4);
+        document.getElementById("pred-label").textContent = label.replace("_", " ");
+
+        let sentEv = evidenceList.find(e => e.source === "sentiment_model") || {};
+        document.getElementById("pred-sentiment").textContent = `${sentEv.value || "positive"} (LOVE)`;
+        document.getElementById("pred-interpretation").textContent = currentInterpretation;
+      }
+
+      async function loadStatsAndRecent() {
+        const res = await window.AppAPI.getChallengeStats();
+        if (!res.ok) {
+          showError(res.error);
+          return;
+        }
+
+        const data = res.data;
+        const stats = data.stats || {};
+        const recent = data.recent || [];
+
+        // Stats tiles
+        document.getElementById("stat-total").textContent = stats.total_reviews !== undefined ? stats.total_reviews : 0;
+        document.getElementById("stat-correct").textContent = stats.correct !== undefined ? stats.correct : 0;
+        document.getElementById("stat-incorrect").textContent = stats.incorrect !== undefined ? stats.incorrect : 0;
+        
+        if (stats.accuracy !== null && stats.accuracy !== undefined) {
+          document.getElementById("stat-accuracy").textContent = (stats.accuracy * 100).toFixed(1) + "%";
+        } else {
+          document.getElementById("stat-accuracy").textContent = "—";
+        }
+
+        // Recent log
+        const logContainer = document.getElementById("submissions-log");
+        if (recent.length === 0) {
+          logContainer.innerHTML = `<span class="font-mono-sm text-mono-sm text-on-surface-variant">No challenge submissions recorded yet.</span>`;
+        } else {
+          logContainer.innerHTML = recent.map(item => `
+            <div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-1 text-left">
+              <div class="flex items-center justify-between">
+                <span class="font-mono-sm text-mono-sm text-on-surface truncate max-w-[180px]">#${item.id} &middot; &ldquo;${item.sentence}&rdquo;</span>
+                <span class="px-1.5 py-0.5 rounded font-mono-sm text-mono-sm ${item.user_verdict === 'correct' ? 'bg-tertiary/15 text-tertiary' : 'bg-error/15 text-error'} font-semibold uppercase">
+                  ${item.user_verdict === 'correct' ? '✓ Correct' : '✕ Incorrect'}
+                </span>
+              </div>
+              ${item.user_feedback ? `<p class="font-mono-sm text-mono-sm text-outline truncate">&ldquo;${item.user_feedback}&rdquo;</p>` : ''}
+              <span class="font-mono-sm text-[10px] text-outline/70">Stored in SQLite &middot; ${new Date(item.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+            </div>
+          `).join("");
+        }
+      }
+
+      async function submitEvaluation() {
+        if (!selectedVerdict) {
+          showError("Please select Correct or Incorrect.");
+          return;
+        }
+
+        showError(null);
+        btnSubmit.disabled = true;
+        btnSubmit.classList.add("opacity-60", "cursor-not-allowed");
+        btnSubmitText.textContent = "Saving evaluation...";
+
+        const payload = {
+          sentence: sentenceText,
+          context: contextText,
+          model_prediction: currentPredictionLabel,
+          model_interpretation: currentInterpretation,
+          user_verdict: selectedVerdict,
+          user_feedback: feedbackInput.value.trim() || null
+        };
+
+        const res = await window.AppAPI.submitChallenge(payload);
+
+        btnSubmit.disabled = false;
+        btnSubmit.classList.remove("opacity-60", "cursor-not-allowed");
+        btnSubmitText.textContent = "Submit Evaluation";
+
+        if (!res.ok) {
+          showError(res.error || "Unable to save evaluation.");
+          return;
+        }
+
+        document.getElementById("success-banner-msg").textContent = `Evaluation #${res.data.submission_id} saved to local SQLite database!`;
+        successBanner.classList.remove("hidden");
+
+        // Refresh stats & recent log
+        await loadStatsAndRecent();
+      }
+
+      btnCorrect.addEventListener("click", () => selectVerdict("correct"));
+      btnIncorrect.addEventListener("click", () => selectVerdict("incorrect"));
+      btnSubmit.addEventListener("click", submitEvaluation);
+
+      // Check Health & Initialize
+      (async () => {
+        const health = await window.AppAPI.checkHealth();
+        const pill = document.getElementById("header-status-pill");
+        const txt = document.getElementById("header-status-text");
+        if (health.ok && health.data && (health.data.status === "ready" || health.data.status === "degraded")) {
+          txt.textContent = `System ${health.data.status.toUpperCase()}`;
+          pill.className = "inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-variant border border-outline-variant font-mono-sm text-mono-sm text-tertiary";
+        } else {
+          txt.textContent = "Backend Offline";
+          pill.className = "inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-error-container/20 border border-error font-mono-sm text-mono-sm text-error";
+        }
+        await loadModelPrediction();
+        await loadStatsAndRecent();
+      })();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{
+  "comparison_warning": "The TF-IDF baseline was trained on 807,969 rows and evaluated on 100,997 test rows, whereas the DistilBERT model was fine-tuned on a 1,000-example CPU-safe subset and evaluated on 500 test rows. Absolute metric differences between TF-IDF and DistilBERT reflect dataset scale differences rather than a controlled architecture benchmark.",
+  "full_data_baseline": {
+    "model_family": "TF-IDF + Logistic Regression",
+    "training_scope": "Full Processed SARC Dataset",
+    "train_size": 807969,
+    "test_size": 100997,
+    "sentence_only": {
+      "accuracy": 0.7232690079903363,
+      "f1_macro": 0.7229870826289866,
+      "roc_auc": 0.7958857389147243
+    },
+    "tfidf_sentence": {
+      "accuracy": 0.7232690079903363,
+      "f1_macro": 0.7229870826289866,
+      "roc_auc": 0.7958857389147243
+    },
+    "context_plus_sentence": {
+      "accuracy": 0.7018030238521936,
+      "f1_macro": 0.7014686699709833,
+      "roc_auc": 0.7701153012662947
+    },
+    "tfidf_context": {
+      "accuracy": 0.7018030238521936,
+      "f1_macro": 0.7014686699709833,
+      "roc_auc": 0.7701153012662947
+    },
+    "context_delta": {
+      "accuracy": -0.021465984138142713,
+      "precision_macro": -0.021470453020249636,
+      "recall_macro": -0.02146575226766756,
+      "f1_macro": -0.02151841265800325,
+      "roc_auc": -0.025770437648429567
+    }
+  },
+  "exploratory_subset_transformer": {
+    "model_family": "DistilBERT (distilbert-base-uncased)",
+    "training_scope": "CPU-Safe Stratified Subset",
+    "train_size": 1000,
+    "test_size": 500,
+    "sentence_only": {
+      "accuracy": 0.628,
+      "f1_macro": 0.6269913847042403,
+      "roc_auc": 0.6759839999999999
+    },
+    "distilbert_sentence": {
+      "accuracy": 0.628,
+      "f1_macro": 0.6269913847042403,
+      "roc_auc": 0.6759839999999999
+    },
+    "context_plus_sentence": {
+      "accuracy": 0.554,
+      "f1_macro": 0.5105334088384936,
+      "roc_auc": 0.6259680000000001
+    },
+    "distilbert_context": {
+      "accuracy": 0.554,
+      "f1_macro": 0.5105334088384936,
+      "roc_auc": 0.6259680000000001
+    },
+    "context_delta": {
+      "accuracy": -0.074,
+      "precision_macro": -0.0456506095199255,
+      "recall_macro": -0.074,
+      "f1_macro": -0.11645797586574669,
+      "roc_auc": -0.05001599999999984
+    }
+  }
+}

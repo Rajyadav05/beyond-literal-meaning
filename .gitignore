@@ -1,0 +1,73 @@
+# ── Python ────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+
+# ── Virtual environments ──────────────────────────────────────
+venv/
+env/
+.env
+.venv/
+
+# ── Distribution / packaging ──────────────────────────────────
+dist/
+build/
+*.egg-info/
+*.egg
+
+# ── Environment files ─────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── IDE / editor ──────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ── Jupyter ───────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ── Datasets (raw downloads — too large for git) ──────────────
+datasets/raw/
+datasets/processed/
+
+# ── Model weights (binary files — too large for git) ──────────
+models/
+
+# ── Results (keep metrics JSON, skip binary artefacts) ────────
+results/confusion_matrices/*.png
+results/predictions/
+
+# ── Logs ──────────────────────────────────────────────────────
+*.log
+logs/
+
+# ── Database ──────────────────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+
+# ── Pytest / coverage ─────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ── SHAP / LIME cache ─────────────────────────────────────────
+shap_values/
+
+# ── OS ────────────────────────────────────────────────────────
+.DS_Store
+ehthumbs.db
+Desktop.ini
+
+# ── Temporary inspection ──────────────────────────────────────
+temp_frontend_inspection/
+

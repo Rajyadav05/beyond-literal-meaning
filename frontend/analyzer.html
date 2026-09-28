@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Analyzer — Non-Literal Language Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary-fixed": "#a2eeff",
+            "primary-container": "#8c80ff",
+            "surface-dim": "#051424",
+            "on-error-container": "#ffdad6",
+            "on-primary": "#2800a0",
+            "on-tertiary-fixed": "#002114",
+            "surface-container": "#122131",
+            "on-surface-variant": "#c8c4d7",
+            "on-primary-container": "#22008d",
+            "on-background": "#d4e4fa",
+            "on-primary-fixed-variant": "#3f25c1",
+            "on-tertiary-fixed-variant": "#005137",
+            "surface-container-lowest": "#010f1f",
+            "tertiary-fixed-dim": "#45dfa4",
+            "secondary": "#5de6ff",
+            "error-container": "#93000a",
+            "surface": "#051424",
+            "surface-bright": "#2c3a4c",
+            "surface-container-low": "#0d1c2d",
+            "inverse-primary": "#5845d9",
+            "primary-fixed": "#e4dfff",
+            "outline-variant": "#474554",
+            "surface-tint": "#c6bfff",
+            "tertiary-container": "#00a574",
+            "on-secondary-fixed-variant": "#004e5a",
+            "tertiary-fixed": "#68fcbf",
+            "on-tertiary": "#003825",
+            "surface-variant": "#273647",
+            "outline": "#928ea0",
+            "on-secondary-fixed": "#001f25",
+            "on-tertiary-container": "#003120",
+            "error": "#ffb4ab",
+            "on-primary-fixed": "#160066",
+            "background": "#051424",
+            "secondary-container": "#00cbe6",
+            "on-secondary": "#00363e",
+            "inverse-on-surface": "#233143",
+            "surface-container-high": "#1c2b3c",
+            "on-surface": "#d4e4fa",
+            "surface-container-highest": "#273647",
+            "primary": "#c6bfff",
+            "on-error": "#690005",
+            "primary-fixed-dim": "#c6bfff",
+            "tertiary": "#45dfa4",
+            "secondary-fixed-dim": "#2fd9f4",
+            "on-secondary-container": "#00515d",
+            "inverse-surface": "#d4e4fa"
+          },
+          borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" },
+          spacing: {
+            "space-xl": "2.5rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "margin-desktop": "2rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "gutter-desktop": "1.5rem"
+          },
+          fontFamily: {
+            "headline-md": ["Inter"],
+            "mono-md": ["JetBrains Mono"],
+            "mono-sm": ["JetBrains Mono"],
+            "display-lg-mobile": ["Inter"],
+            "display-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-caps": ["JetBrains Mono"],
+            "headline-lg": ["Inter"],
+            "mono-lg": ["JetBrains Mono"],
+            "body-sm": ["Inter"]
+          },
+          fontSize: {
+            "headline-md": ["22px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "mono-md": ["13px", { lineHeight: "18px", fontWeight: "500" }],
+            "mono-sm": ["11px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" }],
+            "display-lg-mobile": ["30px", { lineHeight: "38px", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "display-lg": ["40px", { lineHeight: "48px", letterSpacing: "-0.02em", fontWeight: "600" }],
+            "body-md": ["14px", { lineHeight: "22px", fontWeight: "400" }],
+            "body-lg": ["16px", { lineHeight: "26px", fontWeight: "400" }],
+            "headline-sm": ["18px", { lineHeight: "24px", letterSpacing: "-0.005em", fontWeight: "600" }],
+            "label-caps": ["10px", { lineHeight: "14px", letterSpacing: "0.08em", fontWeight: "600" }],
+            "headline-lg": ["28px", { lineHeight: "36px", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "mono-lg": ["15px", { lineHeight: "22px", fontWeight: "500" }],
+            "body-sm": ["12px", { lineHeight: "18px", fontWeight: "400" }]
+          }
+        }
+      }
+    };
+  </script>
+  <script src="js/api.js"></script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+  <aside class="fixed left-0 top-0 h-full w-72 bg-surface-container z-50 flex flex-col justify-between border-r border-outline-variant">
+    <div class="flex flex-col">
+      <div class="p-space-md border-b border-outline-variant">
+        <div class="flex items-center gap-space-sm mb-space-xs">
+          <img alt="Non-Literal Language Lab Logo" class="h-8 w-auto object-contain" src="logo.svg"/>
+          <div class="flex flex-col">
+            <span class="font-headline-sm text-headline-sm uppercase text-on-surface tracking-tight leading-tight">NON-LITERAL<br/>LANGUAGE LAB</span>
+          </div>
+        </div>
+        <div class="mt-space-xs">
+          <span class="font-label-caps text-label-caps uppercase text-secondary tracking-widest">Beyond literal meaning.</span>
+        </div>
+      </div>
+      <nav class="flex flex-col p-space-sm gap-space-xs">
+        <a aria-current="page" class="flex items-center px-space-md py-space-sm rounded transition-colors font-mono-md bg-surface-variant text-primary border-l-2 border-primary-container" href="analyzer.html">Analyzer</a>
+        <a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-colors font-mono-md text-mono-md" href="context_lab.html">Context Lab</a>
+        <a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-colors font-mono-md text-mono-md" href="idiom_lab.html">Idiom Lab</a>
+        <a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-colors font-mono-md text-mono-md" href="challenge.html">Challenge</a>
+      </nav>
+    </div>
+    <div class="p-space-md border-t border-outline-variant bg-surface-container-low">
+      <div class="flex items-center justify-between">
+        <span class="font-mono-sm text-mono-sm text-on-surface-variant">Local NLP</span>
+        <div class="flex items-center gap-space-xs" id="health-indicator">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="pl-72">
+    <header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant z-40 flex items-center justify-between px-gutter-desktop">
+      <div class="flex items-center gap-space-md">
+        <div class="flex items-center gap-space-xs">
+          <span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-variant border border-outline-variant font-mono-sm text-mono-sm text-tertiary" id="header-status-pill">
+            <span class="h-1.5 w-1.5 rounded-full bg-tertiary"></span>
+            <span id="header-status-text">Ready</span>
+          </span>
+        </div>
+      </div>
+      <div class="flex items-center gap-space-sm">
+        <button class="w-8 h-8 rounded border border-outline-variant bg-surface-container hover:bg-surface-variant text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-colors" title="Settings">
+          <span class="material-symbols-outlined text-[18px]">settings</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="w-full pt-16 bg-surface-container-lowest min-h-screen px-margin-desktop py-space-lg">
+      <div class="flex flex-col w-full gap-space-lg">
+        <div class="flex flex-col gap-space-xs">
+          <div class="flex items-center gap-space-xs">
+            <span class="font-label-caps text-label-caps uppercase text-secondary tracking-widest">INFERENCE PIPELINE // CORE EVALUATOR</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            <span class="font-mono-sm text-mono-sm text-on-surface-variant">FastAPI Unified Pipeline</span>
+          </div>
+          <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Analyze Non-Literal Language</h1>
+          <p class="font-body-md text-body-md text-on-surface-variant">See how context can change the interpretation of a sentence.</p>
+        </div>
+
+        <!-- Error Alert Container -->
+        <div id="error-container" class="hidden p-space-sm rounded-lg bg-error-container/30 border border-error text-error font-mono-sm text-mono-sm flex items-center gap-space-xs">
+          <span class="material-symbols-outlined text-[18px]">error</span>
+          <span id="error-message"></span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+          <div class="lg:col-span-8 flex flex-col gap-space-md">
+            <div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+              <div class="flex flex-col gap-space-xs">
+                <div class="flex items-center justify-between">
+                  <label class="font-label-caps text-label-caps text-on-surface tracking-wider uppercase flex items-center gap-space-xs" for="context-input">
+                    <span class="material-symbols-outlined text-[16px] text-secondary">psychology_alt</span>
+                    Context (Optional)
+                  </label>
+                  <span class="font-mono-sm text-mono-sm text-on-surface-variant">Situational Prior</span>
+                </div>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Add context that may change the meaning or reveal pragmatic divergence...</p>
+                <textarea class="w-full bg-surface-container-lowest text-on-surface font-mono-md text-mono-md p-space-sm rounded-lg focus:outline-none focus:bg-surface-container-low transition-colors resize-none placeholder:text-outline/40" id="context-input" placeholder="Add context that may change the meaning..." rows="2">My laptop crashed five minutes before my presentation.</textarea>
+              </div>
+
+              <div class="flex flex-col gap-space-xs">
+                <div class="flex items-center justify-between">
+                  <label class="font-label-caps text-label-caps text-on-surface tracking-wider uppercase flex items-center gap-space-xs" for="sentence-input">
+                    <span class="material-symbols-outlined text-[16px] text-primary">format_quote</span>
+                    Sentence
+                  </label>
+                  <span class="font-mono-sm text-mono-sm text-primary">Target Utterance</span>
+                </div>
+                <input class="w-full bg-surface-container-lowest text-on-surface font-mono-md text-mono-md p-space-sm rounded-lg focus:outline-none focus:bg-surface-container-low transition-colors placeholder:text-outline/40" id="sentence-input" placeholder="Enter a sentence..." type="text" value="Wow, exactly what I needed!"/>
+              </div>
+
+              <div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+                <div class="flex items-center gap-space-sm">
+                  <button class="px-space-md py-space-xs bg-primary text-on-primary font-mono-md text-mono-md rounded-lg flex items-center gap-space-xs transition-transform active:scale-95 shadow-md hover:bg-primary-fixed" id="analyze-btn">
+                    <span class="material-symbols-outlined text-[18px]">bolt</span>
+                    <span id="analyze-btn-text">Analyze Sentence</span>
+                  </button>
+                  <button class="px-space-md py-space-xs bg-surface-container-high hover:bg-surface-bright text-on-surface font-mono-md text-mono-md rounded-lg transition-colors" id="clear-btn">
+                    Clear
+                  </button>
+                </div>
+                <div class="flex items-center gap-space-xs">
+                  <span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span>
+                  <span class="font-mono-sm text-mono-sm text-on-surface-variant">Local Pipeline Ready</span>
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-space-xs pt-space-xs">
+                <span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Evaluation Benchmarks &amp; Quick Runs</span>
+                <div class="flex flex-wrap gap-space-xs" id="demo-chips">
+                  <button class="demo-chip px-space-sm py-0.5 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-mono-sm text-mono-sm transition-all" data-context="My laptop crashed five minutes before my presentation." data-sentence="Wow, exactly what I needed!">
+                    "Wow, exactly what I needed!"
+                  </button>
+                  <button class="demo-chip px-space-sm py-0.5 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-mono-sm text-mono-sm transition-all" data-context="I prepared thoroughly for weeks and completed every question with 20 minutes to spare." data-sentence="The exam was a piece of cake.">
+                    "The exam was a piece of cake."
+                  </button>
+                  <button class="demo-chip px-space-sm py-0.5 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-mono-sm text-mono-sm transition-all" data-context="We were planning a surprise party for weeks until his brother asked about it." data-sentence="Rahul finally spilled the beans.">
+                    "Rahul finally spilled the beans."
+                  </button>
+                  <button class="demo-chip px-space-sm py-0.5 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-mono-sm text-mono-sm transition-all" data-context="My flight was delayed by 14 hours and lost my luggage." data-sentence="Wonderful.">
+                    "Wonderful."
+                  </button>
+                  <button class="demo-chip px-space-sm py-0.5 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-mono-sm text-mono-sm transition-all" data-context="Standing in the freezing cold after a long shift." data-sentence="I absolutely LOVE waiting three hours for the bus.">
+                    "I absolutely LOVE waiting three hours for the bus."
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 flex flex-col gap-space-md">
+            <div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+              <div class="flex items-center justify-between">
+                <span class="font-label-caps text-label-caps uppercase text-on-surface tracking-wider">Detected Signals</span>
+                <span class="inline-flex items-center gap-1 font-mono-sm text-mono-sm text-secondary bg-surface-container-low px-space-xs py-0.5 rounded" id="pipeline-status">Active State</span>
+              </div>
+              <div class="flex flex-col gap-space-xs mt-space-xs">
+                <div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+                  <div class="flex items-center gap-space-xs">
+                    <span class="material-symbols-outlined text-[18px] text-secondary">theater_comedy</span>
+                    <span class="font-mono-sm text-mono-sm text-on-surface">Irony / Sarcasm</span>
+                  </div>
+                  <span class="px-space-xs py-0.5 rounded text-secondary bg-secondary-container/20 font-mono-sm text-mono-sm font-semibold" id="badge-sarcasm">—</span>
+                </div>
+                <div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+                  <div class="flex items-center gap-space-xs">
+                    <span class="material-symbols-outlined text-[18px] text-primary">auto_stories</span>
+                    <span class="font-mono-sm text-mono-sm text-on-surface">Idiomatic Form</span>
+                  </div>
+                  <span class="px-space-xs py-0.5 rounded text-on-surface-variant bg-surface-container-high font-mono-sm text-mono-sm" id="badge-idiom">—</span>
+                </div>
+                <div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+                  <div class="flex items-center gap-space-xs">
+                    <span class="material-symbols-outlined text-[18px] text-tertiary">tune</span>
+                    <span class="font-mono-sm text-mono-sm text-on-surface">Context Signal</span>
+                  </div>
+                  <span class="px-space-xs py-0.5 rounded text-tertiary bg-tertiary-container/20 font-mono-sm text-mono-sm" id="badge-context">—</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col gap-space-xs">
+              <span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider">Signal Synthesis</span>
+              <p class="font-body-sm text-body-sm text-on-surface" id="signal-synthesis-text">
+                Enter a sentence and optional context to run the FastAPI evidence fusion pipeline.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-surface-container rounded-xl p-space-md shadow-md flex flex-col gap-space-md">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-xs">
+            <div>
+              <span class="font-label-caps text-label-caps uppercase text-secondary tracking-wider">Semantic Resolution</span>
+              <h2 class="font-headline-sm text-headline-sm text-on-surface">Interpretation Pipeline</h2>
+            </div>
+            <span class="px-space-sm py-0.5 rounded bg-surface-container-low text-on-surface-variant font-mono-sm text-mono-sm">
+              Stage: Evidence Fusion Synthesis
+            </span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md relative">
+            <div class="bg-surface-container-low rounded-lg p-space-md flex flex-col gap-space-xs relative overflow-hidden">
+              <div class="flex items-center justify-between">
+                <span class="font-label-caps text-label-caps text-primary tracking-wider uppercase">Stage 01 // Surface Form</span>
+                <span class="material-symbols-outlined text-[18px] text-on-surface-variant">chat_bubble_outline</span>
+              </div>
+              <span class="font-headline-sm text-headline-sm text-on-surface mt-space-xs truncate" id="pipe-step-1">—</span>
+              <p class="font-body-sm text-body-sm text-on-surface-variant mt-auto pt-space-sm" id="pipe-step-1-desc">
+                Target utterance parsed as surface form.
+              </p>
+            </div>
+            <div class="bg-surface-container-low rounded-lg p-space-md flex flex-col gap-space-xs relative overflow-hidden">
+              <div class="flex items-center justify-between">
+                <span class="font-label-caps text-label-caps text-secondary tracking-wider uppercase">Stage 02 // Conflict &amp; Alignment</span>
+                <span class="material-symbols-outlined text-[18px] text-secondary">swap_calls</span>
+              </div>
+              <span class="font-headline-sm text-headline-sm text-on-surface mt-space-xs truncate" id="pipe-step-2">—</span>
+              <p class="font-body-sm text-body-sm text-on-surface-variant mt-auto pt-space-sm" id="pipe-step-2-desc">
+                Signal alignment across sarcasm, sentiment, emotion, and context models.
+              </p>
+            </div>
+            <div class="bg-surface-container-low rounded-lg p-space-md flex flex-col gap-space-xs relative overflow-hidden">
+              <div class="flex items-center justify-between">
+                <span class="font-label-caps text-label-caps text-tertiary tracking-wider uppercase">Stage 03 // Predicted Interpretation</span>
+                <span class="material-symbols-outlined text-[18px] text-tertiary">verified</span>
+              </div>
+              <span class="font-headline-sm text-headline-sm text-on-surface mt-space-xs" id="pipe-step-3">—</span>
+              <p class="font-body-sm text-body-sm text-on-surface-variant mt-auto pt-space-sm" id="pipe-step-3-desc">
+                Model-generated interpretation summary.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-space-md">
+          <!-- Card A: Sarcasm -->
+          <div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+            <div class="flex items-center justify-between">
+              <span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider">Card A // Sarcasm Classifier</span>
+              <span class="material-symbols-outlined text-[18px] text-secondary">theater_comedy</span>
+            </div>
+            <div class="flex items-baseline justify-between">
+              <span class="font-headline-sm text-headline-sm text-on-surface capitalize" id="sarcasm-label">—</span>
+              <span class="font-mono-md text-mono-md text-secondary" id="sarcasm-score">—</span>
+            </div>
+            <div class="w-full bg-surface-container-lowest h-2 rounded-full overflow-hidden mt-space-xs">
+              <div class="bg-secondary h-full transition-all duration-500" id="sarcasm-bar" style="width: 0%"></div>
+            </div>
+            <div class="flex items-center justify-between text-on-surface-variant font-mono-sm text-mono-sm pt-space-xs">
+              <span>Primary Signal Source</span>
+              <span class="text-on-surface" id="sarcasm-model-name">DistilBERT / TF-IDF</span>
+            </div>
+          </div>
+
+          <!-- Card B: Idiom -->
+          <div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+            <div class="flex items-center justify-between">
+              <span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider">Card B // Idiom Detection</span>
+              <span class="material-symbols-outlined text-[18px] text-primary">auto_stories</span>
+            </div>
+            <div class="flex flex-col gap-space-xs">
+              <div class="flex justify-between items-center text-on-surface font-mono-sm text-mono-sm">
+                <span class="text-on-surface-variant">Detected expression</span>
+                <span class="font-semibold text-primary" id="idiom-expression">—</span>
+              </div>
+              <div class="flex justify-between items-center text-on-surface font-mono-sm text-mono-sm">
+                <span class="text-on-surface-variant">Literal sense</span>
+                <span class="text-on-surface-variant truncate max-w-[200px]" id="idiom-literal">—</span>
+              </div>
+              <div class="flex justify-between items-center text-on-surface font-mono-sm text-mono-sm">
+                <span class="text-on-surface-variant">Idiomatic sense</span>
+                <span class="text-on-surface-variant truncate max-w-[200px]" id="idiom-figurative">—</span>
+              </div>
+            </div>
+            <div class="pt-space-xs mt-auto flex items-center justify-between font-mono-sm text-mono-sm text-on-surface-variant">
+              <span>Detection Engine</span>
+              <span class="text-on-surface">PIE-v1.8 Lexicon</span>
+            </div>
+          </div>
+
+          <!-- Card C: Sentiment -->
+          <div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+            <div class="flex items-center justify-between">
+              <span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider">Card C // Surface Sentiment</span>
+              <span class="material-symbols-outlined text-[18px] text-tertiary">sentiment_satisfied</span>
+            </div>
+            <div class="flex flex-col gap-space-xs">
+              <div>
+                <div class="flex justify-between font-mono-sm text-mono-sm mb-1">
+                  <span class="text-on-surface-variant">Positive</span>
+                  <span class="text-tertiary" id="sent-pos">—</span>
+                </div>
+                <div class="w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden">
+                  <div class="bg-tertiary h-full transition-all duration-500" id="sent-pos-bar" style="width: 0%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between font-mono-sm text-mono-sm mb-1">
+                  <span class="text-on-surface-variant">Neutral</span>
+                  <span class="text-on-surface-variant" id="sent-neu">—</span>
+                </div>
+                <div class="w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden">
+                  <div class="bg-outline-variant h-full transition-all duration-500" id="sent-neu-bar" style="width: 0%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between font-mono-sm text-mono-sm mb-1">
+                  <span class="text-on-surface-variant">Negative</span>
+                  <span class="text-error" id="sent-neg">—</span>
+                </div>
+                <div class="w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden">
+                  <div class="bg-error h-full transition-all duration-500" id="sent-neg-bar" style="width: 0%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card D: Emotion -->
+          <div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+            <div class="flex items-center justify-between">
+              <span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider">Card D // Emotion Spectrum</span>
+              <span class="material-symbols-outlined text-[18px] text-secondary">mood</span>
+            </div>
+            <div class="flex flex-col gap-space-xs" id="emotion-list">
+              <span class="font-mono-sm text-mono-sm text-on-surface-variant">—</span>
+            </div>
+            <div class="mt-auto pt-space-xs flex justify-between items-center text-on-surface-variant font-mono-sm text-mono-sm">
+              <span>Model</span>
+              <span class="text-on-surface">GoEmotions 28-Class</span>
+            </div>
+          </div>
+
+          <!-- Card E: Semantic Similarity -->
+          <div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+            <div class="flex items-center justify-between">
+              <span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider">Card E // Contextual Divergence</span>
+              <span class="material-symbols-outlined text-[18px] text-primary">grain</span>
+            </div>
+            <div class="flex flex-col gap-space-xs">
+              <div class="flex items-baseline justify-between">
+                <span class="font-headline-sm text-headline-sm text-on-surface">Cosine Similarity</span>
+                <span class="font-mono-md text-mono-md text-primary" id="ctx-distance">—</span>
+              </div>
+              <div class="w-full bg-surface-container-lowest h-2 rounded-full overflow-hidden mt-space-xs">
+                <div class="bg-primary h-full transition-all duration-500" id="ctx-dist-bar" style="width: 0%"></div>
+              </div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs" id="ctx-summary">
+                Semantic relationship between context and sentence embeddings.
+              </p>
+            </div>
+            <div class="mt-auto pt-space-xs flex justify-between items-center text-on-surface-variant font-mono-sm text-mono-sm">
+              <span>Embedding Engine</span>
+              <span class="text-on-surface">all-MiniLM-L6-v2</span>
+            </div>
+          </div>
+
+          <!-- Validation Signals -->
+          <div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-sm">
+            <div class="flex flex-col gap-space-xs">
+              <div class="flex items-center justify-between">
+                <span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider">Validation Signals</span>
+                <span class="material-symbols-outlined text-[18px] text-tertiary">rule</span>
+              </div>
+              <div class="flex flex-col gap-space-xs mt-space-xs">
+                <div class="flex items-center justify-between font-mono-sm text-mono-sm text-on-surface">
+                  <span>Context Conditioning</span>
+                  <span class="text-tertiary" id="signal-context-status">None</span>
+                </div>
+                <div class="flex items-center justify-between font-mono-sm text-mono-sm text-on-surface">
+                  <span>Adverse Situation Detected</span>
+                  <span class="text-on-surface-variant" id="signal-adverse-status">No</span>
+                </div>
+                <div class="flex items-center justify-between font-mono-sm text-mono-sm text-on-surface">
+                  <span>Agreement Count</span>
+                  <span class="text-secondary" id="signal-agreement-count">0</span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-surface-container-low p-space-xs rounded font-mono-sm text-mono-sm text-on-surface-variant">
+              Live inference from local FastAPI backend.
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-space-xs">
+              <span class="material-symbols-outlined text-[20px] text-primary">insights</span>
+              <h2 class="font-headline-sm text-headline-sm text-on-surface">Why the system produced this result</h2>
+            </div>
+            <span class="font-mono-sm text-mono-sm text-on-surface-variant">Signal Attribution</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+            <div class="bg-surface-container-low rounded-lg p-space-md flex flex-col gap-space-xs">
+              <div class="flex items-center gap-space-xs text-secondary">
+                <span class="material-symbols-outlined text-[18px]">contrast</span>
+                <span class="font-mono-md text-mono-md font-semibold">Signal Alignment &amp; Agreement</span>
+              </div>
+              <div class="font-body-sm text-body-sm text-on-surface" id="evidence-disagreement">
+                Run analysis to inspect signal alignment.
+              </div>
+            </div>
+            <div class="bg-surface-container-low rounded-lg p-space-md flex flex-col gap-space-xs">
+              <div class="flex items-center gap-space-xs text-tertiary">
+                <span class="material-symbols-outlined text-[18px]">domain_verification</span>
+                <span class="font-mono-md text-mono-md font-semibold">Interpretation Basis</span>
+              </div>
+              <div class="font-body-sm text-body-sm text-on-surface" id="evidence-context">
+                Run analysis to inspect evidence basis.
+              </div>
+            </div>
+          </div>
+          <div class="p-space-sm rounded-lg bg-surface-container-lowest flex items-center gap-space-sm text-on-surface-variant">
+            <span class="material-symbols-outlined text-[18px] text-outline">info</span>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">
+              Scientific note: Predictions represent computational language signals and approximations derived from probabilistic language models rather than ground-truth human intent certainty.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (() => {
+      const sentenceInput = document.getElementById("sentence-input");
+      const contextInput = document.getElementById("context-input");
+      const analyzeBtn = document.getElementById("analyze-btn");
+      const analyzeBtnText = document.getElementById("analyze-btn-text");
+      const clearBtn = document.getElementById("clear-btn");
+      const demoChips = document.querySelectorAll(".demo-chip");
+      const errorContainer = document.getElementById("error-container");
+      const errorMessage = document.getElementById("error-message");
+
+      function showError(msg) {
+        if (!msg) {
+          errorContainer.classList.add("hidden");
+        } else {
+          errorMessage.textContent = msg;
+          errorContainer.classList.remove("hidden");
+        }
+      }
+
+      function formatNumber(val, decimals = 4) {
+        if (val === null || val === undefined || isNaN(val)) return "—";
+        return Number(val).toFixed(decimals);
+      }
+
+      async function runAnalysis() {
+        const sentence = sentenceInput.value.trim();
+        const context = contextInput.value.trim();
+
+        if (!sentence) {
+          showError("Please enter a sentence.");
+          return;
+        }
+
+        showError(null);
+        analyzeBtn.disabled = true;
+        analyzeBtn.classList.add("opacity-60", "cursor-not-allowed");
+        analyzeBtnText.textContent = "Analyzing language...";
+
+        const result = await window.AppAPI.analyze(sentence, context);
+
+        analyzeBtn.disabled = false;
+        analyzeBtn.classList.remove("opacity-60", "cursor-not-allowed");
+        analyzeBtnText.textContent = "Analyze Sentence";
+
+        if (!result.ok) {
+          showError(result.error);
+          return;
+        }
+
+        renderResults(result.data);
+      }
+
+      function renderResults(data) {
+        const evidenceList = data.evidence || [];
+        const interp = data.interpretation_summary || {};
+        const alignment = data.signal_alignment || {};
+
+        // Sarcasm signal extraction
+        let sarcasmEv = evidenceList.find(e => e.source === "sarcasm_classifier_distilbert") ||
+                        evidenceList.find(e => e.source === "sarcasm_classifier") || {};
+        let sarcasmLabel = sarcasmEv.value || (interp.interpretation && interp.interpretation.toLowerCase().includes("sarcastic") ? "sarcastic" : "not_sarcastic");
+        let sarcasmProb = sarcasmEv.sarcasm_model_probability !== undefined && sarcasmEv.sarcasm_model_probability !== null ? sarcasmEv.sarcasm_model_probability : interp.sarcasm_model_probability;
+
+        document.getElementById("badge-sarcasm").textContent = `${sarcasmLabel} (${formatNumber(sarcasmProb, 2)})`;
+        document.getElementById("sarcasm-label").textContent = sarcasmLabel.replace("_", " ");
+        document.getElementById("sarcasm-score").textContent = formatNumber(sarcasmProb);
+        document.getElementById("sarcasm-bar").style.width = sarcasmProb !== null && sarcasmProb !== undefined ? (sarcasmProb * 100) + "%" : "0%";
+        document.getElementById("sarcasm-model-name").textContent = sarcasmEv.model_name || "TF-IDF / DistilBERT";
+
+        // Idiom signal extraction
+        let idiomEv = evidenceList.find(e => e.source === "idiom_detector") || {};
+        let idiomCandidates = Array.isArray(idiomEv.value) ? idiomEv.value : [];
+        let hasIdiom = idiomCandidates.length > 0;
+        let mainIdiom = hasIdiom ? idiomCandidates[0] : null;
+
+        document.getElementById("badge-idiom").textContent = hasIdiom ? `Idiom: "${mainIdiom.phrase}"` : "No idiom detected";
+        document.getElementById("idiom-expression").textContent = mainIdiom ? mainIdiom.phrase : "—";
+        document.getElementById("idiom-literal").textContent = mainIdiom ? (mainIdiom.literal_meaning || "—") : "—";
+        document.getElementById("idiom-figurative").textContent = mainIdiom ? (mainIdiom.actual_meaning || mainIdiom.idiomatic_meaning || "—") : "—";
+
+        // Context badge
+        let ctxProvided = !!data.context;
+        document.getElementById("badge-context").textContent = ctxProvided ? "Context Conditioning" : "No Prior Context";
+        document.getElementById("signal-context-status").textContent = ctxProvided ? "Active" : "None";
+
+        // Sentiment signal extraction
+        let sentEv = evidenceList.find(e => e.source === "sentiment_model") || {};
+        let sentProbs = sentEv.probabilities || {};
+        let posVal = sentProbs.positive !== undefined ? sentProbs.positive : null;
+        let neuVal = sentProbs.neutral !== undefined ? sentProbs.neutral : null;
+        let negVal = sentProbs.negative !== undefined ? sentProbs.negative : null;
+
+        document.getElementById("sent-pos").textContent = formatNumber(posVal, 3);
+        document.getElementById("sent-neu").textContent = formatNumber(neuVal, 3);
+        document.getElementById("sent-neg").textContent = formatNumber(negVal, 3);
+        document.getElementById("sent-pos-bar").style.width = posVal ? (posVal * 100) + "%" : "0%";
+        document.getElementById("sent-neu-bar").style.width = neuVal ? (neuVal * 100) + "%" : "0%";
+        document.getElementById("sent-neg-bar").style.width = negVal ? (negVal * 100) + "%" : "0%";
+
+        // Emotion spectrum
+        let emoEv = evidenceList.find(e => e.source === "emotion_model") || {};
+        let emotions = Array.isArray(emoEv.value) ? emoEv.value : [];
+        const emotionContainer = document.getElementById("emotion-list");
+        if (emotions.length > 0) {
+          emotionContainer.innerHTML = emotions.slice(0, 3).map(e => `
+            <div class="flex items-center justify-between p-space-xs rounded bg-surface-container-low font-mono-sm text-mono-sm">
+              <span class="text-on-surface capitalize">${e.label}</span>
+              <span class="text-secondary font-semibold">${formatNumber(e.probability, 3)}</span>
+            </div>
+          `).join("");
+        } else {
+          emotionContainer.innerHTML = `<span class="font-mono-sm text-mono-sm text-on-surface-variant">—</span>`;
+        }
+
+        // Semantic distance
+        let semEv = evidenceList.find(e => e.source === "semantic_similarity") || {};
+        let simVal = semEv.value !== undefined ? semEv.value : null;
+        document.getElementById("ctx-distance").textContent = formatNumber(simVal);
+        document.getElementById("ctx-dist-bar").style.width = simVal !== null ? (Math.max(0, Math.min(1, simVal)) * 100) + "%" : "0%";
+        document.getElementById("ctx-summary").textContent = semEv.description || (ctxProvided ? "Vector similarity calculated." : "No context provided for distance computation.");
+
+        // Pipeline steps
+        document.getElementById("pipe-step-1").textContent = `"${data.input_text}"`;
+        document.getElementById("pipe-step-1-desc").textContent = `Surface sentiment: ${sentEv.value || "positive"}`;
+        
+        document.getElementById("pipe-step-2").textContent = ctxProvided ? "Contextual conditioning active" : "Standalone utterance";
+        document.getElementById("pipe-step-2-desc").textContent = alignment.agreement && alignment.agreement.length ? alignment.agreement[0] : "Signal alignment processing complete.";
+
+        document.getElementById("pipe-step-3").textContent = interp.interpretation || "Model-generated interpretation summary.";
+        document.getElementById("pipe-step-3-desc").textContent = `Primary model confidence: ${formatNumber(sarcasmProb, 3)}`;
+
+        // Signal synthesis
+        document.getElementById("signal-synthesis-text").textContent = interp.interpretation || "Inference pipeline synthesis complete.";
+        document.getElementById("signal-agreement-count").textContent = (alignment.agreement || []).length;
+
+        // Adverse context check
+        let advEv = evidenceList.find(e => e.source === "contextual_signal");
+        document.getElementById("signal-adverse-status").textContent = (advEv && advEv.value) ? "Yes" : "No";
+
+        // Evidence boxes
+        const agreeList = alignment.agreement || [];
+        document.getElementById("evidence-disagreement").innerHTML = agreeList.length 
+          ? agreeList.map(a => `<p class="mb-1">&bull; ${a}</p>`).join("") 
+          : `<p class="text-on-surface-variant">No signal agreement or conflict recorded.</p>`;
+
+        const basisList = interp.basis || [];
+        document.getElementById("evidence-context").innerHTML = basisList.length 
+          ? basisList.map(b => `<p class="mb-1">&bull; ${b}</p>`).join("") 
+          : `<p class="text-on-surface-variant">Standard inference trace.</p>`;
+      }
+
+      // Check Health on page load
+      (async () => {
+        const health = await window.AppAPI.checkHealth();
+        const pill = document.getElementById("header-status-pill");
+        const txt = document.getElementById("header-status-text");
+        if (health.ok && health.data && (health.data.status === "ready" || health.data.status === "degraded")) {
+          txt.textContent = `System ${health.data.status.toUpperCase()}`;
+          pill.className = "inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-variant border border-outline-variant font-mono-sm text-mono-sm text-tertiary";
+        } else {
+          txt.textContent = "Backend Offline";
+          pill.className = "inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-error-container/20 border border-error font-mono-sm text-mono-sm text-error";
+        }
+        // Run initial analysis on load
+        runAnalysis();
+      })();
+
+      demoChips.forEach(chip => {
+        chip.addEventListener("click", () => {
+          sentenceInput.value = chip.getAttribute("data-sentence") || "";
+          contextInput.value = chip.getAttribute("data-context") || "";
+          showError(null);
+        });
+      });
+
+      analyzeBtn.addEventListener("click", runAnalysis);
+
+      clearBtn.addEventListener("click", () => {
+        sentenceInput.value = "";
+        contextInput.value = "";
+        showError(null);
+        sentenceInput.focus();
+      });
+    })();
+  </script>
+</body>
+</html>

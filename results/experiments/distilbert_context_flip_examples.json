@@ -1,0 +1,260 @@
+{
+  "evaluation_scope": "500-example exploratory test subset",
+  "total_test_examples": 500,
+  "total_flipped_predictions": 181,
+  "flip_percentage": 36.2,
+  "notes": "Reflects prediction sensitivity (percentage of test predictions that changed when parent context was appended). Flipped predictions represent decision boundary shifts, not guaranteed accuracy gains.",
+  "prediction_sensitivity_note": "36.20% prediction flips (181/500) measure model decision sensitivity to parent context. Flipped predictions must NOT be described as 36.2% improvement or accuracy gain, as flips include both correct and incorrect label changes.",
+  "flip_examples": [
+    {
+      "example_id": "8f96a873a477b220",
+      "true_label": 1,
+      "text": "OP is sexist confirmed.",
+      "context": "Evie?",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.49211758375167847,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.5485777258872986
+    },
+    {
+      "example_id": "f3eeecd0819ef9f6",
+      "true_label": 1,
+      "text": "Maybe that's why they arrested them.",
+      "context": "They arrest our fishermen and we serve them Kakra and Fafda.",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.4346652626991272,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.603390097618103
+    },
+    {
+      "example_id": "bae8b7c685efac01",
+      "true_label": 0,
+      "text": "I just finished watching that show earlier this week, I was so depressed after how it ended... *feels intensifying*",
+      "context": "You're gonna carry that weight.",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.42112940549850464,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.5487430095672607
+    },
+    {
+      "example_id": "4e3c169af2fea570",
+      "true_label": 0,
+      "text": "Looks like an iLimb.",
+      "context": "Anyone know wtf is going on here, is she controlling that hand with her brain?",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.3295990228652954,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.5113466382026672
+    },
+    {
+      "example_id": "4af5d40fe7215610",
+      "true_label": 0,
+      "text": "Bigger budgets perhaps?",
+      "context": "It always felt to me like the cinema was leagues ahead of the made for TV sci fi.",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.4819463789463043,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.5411534309387207
+    },
+    {
+      "example_id": "fdc3ef70cfe8af5c",
+      "true_label": 0,
+      "text": "Great thing about plastidip is you can just peel it off if you ever want to change the color or go back to the original.",
+      "context": "While the end result is actually quite nice, why didn't you just.. paint it??",
+      "sentence_prediction": 1,
+      "sentence_probability_sarcastic": 0.5359466671943665,
+      "context_prediction": 0,
+      "context_probability_sarcastic": 0.4395543336868286
+    },
+    {
+      "example_id": "7827a58a2218f618",
+      "true_label": 1,
+      "text": "Weird stuff like that never happens.",
+      "context": "Can you imagine if that actually happened and he started winning games for us?",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.4680202007293701,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.5130254030227661
+    },
+    {
+      "example_id": "5e58946f97071d01",
+      "true_label": 0,
+      "text": "Zenimax didn't have a WoW phase financially though XD",
+      "context": "Zenimax on the other hand I Has like no money right?",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.3398272693157196,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.523036003112793
+    },
+    {
+      "example_id": "faf02f6d0c769769",
+      "true_label": 1,
+      "text": "better, make polls only available to maxed mains, as the rest has no idea whatsoever what they are talkin about",
+      "context": "Remember, Jagex are the ones who ran this game into the ground in the first place. We should raise the level requirement to vote, though. 1k sounds good.",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.4429088532924652,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.5046589970588684
+    },
+    {
+      "example_id": "69c88d796ec7c5bd",
+      "true_label": 0,
+      "text": "It is what they delivered that counts.",
+      "context": "Why does \"open border policy\" get attributed to the left in this country? I've not seen a single organisation or political party actually advocate for such a thing.",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.311847448348999,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.6187267303466797
+    },
+    {
+      "example_id": "74ca3da4561259d9",
+      "true_label": 0,
+      "text": "ok for the sake of typing lets end the discussion XD",
+      "context": "Like I said, idc about the killing lol all I care about is the time you've wasted fighting a flame war you can't win. Ugh I hate typing on my tablet.",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.4566380977630615,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.5291780829429626
+    },
+    {
+      "example_id": "d4faf860f3547840",
+      "true_label": 1,
+      "text": "Because \"looking for casual sex\" CLEARLY means \"I'll sleep with anyone who begs me enough\".",
+      "context": "At least he's honest?",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.41653451323509216,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.5491880178451538
+    },
+    {
+      "example_id": "e37f6626921aafdc",
+      "true_label": 1,
+      "text": "BUT THAT MEANS WE GET ANOTHER YMIR SKIN, YMIR HAS TO MANY SKINS AURUFURUSICHHTRIDIJC.",
+      "context": "Should Hi-Rez Make Smite (and their other stuff) available for the Nintendo Switch?",
+      "sentence_prediction": 1,
+      "sentence_probability_sarcastic": 0.5684558153152466,
+      "context_prediction": 0,
+      "context_probability_sarcastic": 0.44598889350891113
+    },
+    {
+      "example_id": "4262c6345eafe9b6",
+      "true_label": 1,
+      "text": "This is truly the most important post ever on Reddit.",
+      "context": "Final Poll to End all polls - Did Trump win the popular vote?",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.362985223531723,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.5821850299835205
+    },
+    {
+      "example_id": "dd7fa04219d2a46f",
+      "true_label": 1,
+      "text": "What are you saying.. i love getting 2 stingers for killing hard bosses in dungeons that last 30 minutes",
+      "context": "Anybody else think that stingers shouldn't be dropped from the newer dungeons that we're getting?",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.4737071692943573,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.5561909079551697
+    },
+    {
+      "example_id": "7d9037bc219ac526",
+      "true_label": 0,
+      "text": "Keeping John Fassel permanently as head coach",
+      "context": "What would be the most Rams thing to do in terms of hiring a new head coach? Are they allowed to send Jeff Fisher an offer again?",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.43389126658439636,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.5342305898666382
+    },
+    {
+      "example_id": "562308ebc7aa8a56",
+      "true_label": 1,
+      "text": "Senna couldn't even win a rain affected race in Monaco",
+      "context": "he won 1 lucky rain affected race in monza",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.3801787495613098,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.518338680267334
+    },
+    {
+      "example_id": "94f1d55210e2c786",
+      "true_label": 1,
+      "text": "Destiny for Xbox.",
+      "context": "Reddit, other than your house and car, what is the most expensive thing you have ever purchased?",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.32063665986061096,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.5306016802787781
+    },
+    {
+      "example_id": "abb32f2d236a31ca",
+      "true_label": 0,
+      "text": "Oh, I agree fully that he's been screwing up too much, he seems to be spending more time looking through his script instead of calling the match.",
+      "context": "For what it's worth, Cole made the mistake twice. They showed a replay of it a bit later and he called it a Blue Thunder Bomb again. It's not a big deal, but the kicker for me was that Cole had been calling the Michinoku Driver for over a year - it's one of Luke Harper's signatures and Cole calls it every time.",
+      "sentence_prediction": 1,
+      "sentence_probability_sarcastic": 0.5666815042495728,
+      "context_prediction": 0,
+      "context_probability_sarcastic": 0.4874214828014374
+    },
+    {
+      "example_id": "a5293e2d2415f6ca",
+      "true_label": 0,
+      "text": "Well that's extremely disappointing",
+      "context": "They are very low velocity, HE only firing 40mms. They are worse at ground attack that 7.7mms.",
+      "sentence_prediction": 1,
+      "sentence_probability_sarcastic": 0.8098277449607849,
+      "context_prediction": 0,
+      "context_probability_sarcastic": 0.49087944626808167
+    },
+    {
+      "example_id": "5551cd8d5ef3246a",
+      "true_label": 0,
+      "text": "He's hanging out with Sanu on my bench...",
+      "context": "Why didn't I start Willie Snead!?",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.4847817122936249,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.5550999641418457
+    },
+    {
+      "example_id": "016b843bd1a27734",
+      "true_label": 0,
+      "text": "Ah, from anal I presume?",
+      "context": "I got a jalapeno seed on my scrotum once. It was horrible. I wouldn't wish that pain on anyone's genitals.",
+      "sentence_prediction": 1,
+      "sentence_probability_sarcastic": 0.5485533475875854,
+      "context_prediction": 0,
+      "context_probability_sarcastic": 0.4967174530029297
+    },
+    {
+      "example_id": "921b8193125b78c1",
+      "true_label": 1,
+      "text": "I'm lovin' it.",
+      "context": "How Animals are treated in UK slaughter houses...very saddening",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.3632693886756897,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.6391776204109192
+    },
+    {
+      "example_id": "790d18a8727a1623",
+      "true_label": 0,
+      "text": "FUCK DIS SUB ERRYDAY",
+      "context": "Hydraulic Press on molten coins",
+      "sentence_prediction": 1,
+      "sentence_probability_sarcastic": 0.5284112095832825,
+      "context_prediction": 0,
+      "context_probability_sarcastic": 0.4873257577419281
+    },
+    {
+      "example_id": "e447ec4686d2774f",
+      "true_label": 0,
+      "text": "A slaughterhouse seems more likely.",
+      "context": "What's in the basement? Rooms where women, and only women live? A feminist center?",
+      "sentence_prediction": 0,
+      "sentence_probability_sarcastic": 0.3047354817390442,
+      "context_prediction": 1,
+      "context_probability_sarcastic": 0.603348970413208
+    }
+  ]
+}

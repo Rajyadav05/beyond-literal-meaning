@@ -1,0 +1,99 @@
+{
+  "dataset": "SemEval-2022 Task 2 (EN)",
+  "model": "distilbert-base-uncased",
+  "training_subset_size": 1000,
+  "test_subset_size": 333,
+  "random_seed": 42,
+  "device": "cpu",
+  "experiment_type": "exploratory_subset",
+  "sentence_only": {
+    "accuracy": 0.6996996996996997,
+    "precision_macro": 0.7294801032671592,
+    "recall_macro": 0.6867122990004346,
+    "f1_macro": 0.6798076923076923,
+    "roc_auc": 0.7943285528031292,
+    "confusion_matrix": {
+      "tn": 158,
+      "fp": 19,
+      "fn": 81,
+      "tp": 75
+    },
+    "classification_report": {
+      "0": {
+        "precision": 0.6610878661087866,
+        "recall": 0.8926553672316384,
+        "f1-score": 0.7596153846153846,
+        "support": 177.0
+      },
+      "1": {
+        "precision": 0.7978723404255319,
+        "recall": 0.4807692307692308,
+        "f1-score": 0.6,
+        "support": 156.0
+      },
+      "accuracy": 0.6996996996996997,
+      "macro avg": {
+        "precision": 0.7294801032671592,
+        "recall": 0.6867122990004346,
+        "f1-score": 0.6798076923076923,
+        "support": 333.0
+      },
+      "weighted avg": {
+        "precision": 0.7251670793022168,
+        "recall": 0.6996996996996997,
+        "f1-score": 0.6848406098406098,
+        "support": 333.0
+      }
+    },
+    "training_duration_seconds": 231.78
+  },
+  "context_plus_sentence": {
+    "accuracy": 0.5825825825825826,
+    "precision_macro": 0.6689084632781812,
+    "recall_macro": 0.6027813993915689,
+    "f1_macro": 0.5464415548783474,
+    "roc_auc": 0.7631464580617123,
+    "confusion_matrix": {
+      "tn": 50,
+      "fp": 127,
+      "fn": 12,
+      "tp": 144
+    },
+    "classification_report": {
+      "0": {
+        "precision": 0.8064516129032258,
+        "recall": 0.2824858757062147,
+        "f1-score": 0.41841004184100417,
+        "support": 177.0
+      },
+      "1": {
+        "precision": 0.5313653136531366,
+        "recall": 0.9230769230769231,
+        "f1-score": 0.6744730679156908,
+        "support": 156.0
+      },
+      "accuracy": 0.5825825825825826,
+      "macro avg": {
+        "precision": 0.6689084632781812,
+        "recall": 0.6027813993915689,
+        "f1-score": 0.5464415548783474,
+        "support": 333.0
+      },
+      "weighted avg": {
+        "precision": 0.6775823555968776,
+        "recall": 0.5825825825825826,
+        "f1-score": 0.5383674954976142,
+        "support": 333.0
+      }
+    },
+    "training_duration_seconds": 231.05
+  },
+  "difference_context_minus_sentence": {
+    "accuracy": -0.11711711711711714,
+    "precision_macro": -0.060571639988977966,
+    "recall_macro": -0.08393089960886568,
+    "f1_macro": -0.1333661374293449,
+    "roc_auc": -0.031182094741416866
+  },
+  "comparison_warning": "In these experiments, adding surrounding context reduced the measured performance of both the TF-IDF baseline and the exploratory DistilBERT configuration. The results indicate that the current model and feature configurations did not effectively exploit the additional context."
+}

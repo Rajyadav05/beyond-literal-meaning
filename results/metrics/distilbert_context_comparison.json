@@ -1,0 +1,125 @@
+{
+  "evaluation_scope": "500-example exploratory test subset",
+  "training_subset_size": 1000,
+  "test_subset_size": 500,
+  "random_seed": 42,
+  "notes": "Internally controlled comparison evaluating sentence-only and context+sentence DistilBERT models fine-tuned and tested on the exact same 500-example SARC test subset.",
+  "comparison_warning": "This context delta (-7.40% accuracy, -11.65% macro F1, -5.00% ROC-AUC) is an internally controlled exploratory result on the 500-example test subset and must not be generalized to the full SARC dataset.",
+  "sentence_only": {
+    "accuracy": 0.628,
+    "precision_macro": 0.6281084224729094,
+    "recall_macro": 0.628,
+    "f1_macro": 0.6269913847042403,
+    "roc_auc": 0.6759839999999999,
+    "per_class": {
+      "non_sarcastic_0": {
+        "precision": 0.628,
+        "recall": 0.628,
+        "f1": 0.628,
+        "support": 250
+      },
+      "sarcastic_1": {
+        "precision": 0.628,
+        "recall": 0.628,
+        "f1": 0.628,
+        "support": 250
+      }
+    },
+    "confusion_matrix": {
+      "tn": 157,
+      "fp": 93,
+      "fn": 93,
+      "tp": 157
+    },
+    "classification_report": {
+      "0": {
+        "precision": 0.628,
+        "recall": 0.628,
+        "f1-score": 0.628,
+        "support": 250.0
+      },
+      "1": {
+        "precision": 0.628,
+        "recall": 0.628,
+        "f1-score": 0.628,
+        "support": 250.0
+      },
+      "accuracy": 0.628,
+      "macro avg": {
+        "precision": 0.628,
+        "recall": 0.628,
+        "f1-score": 0.628,
+        "support": 500.0
+      },
+      "weighted avg": {
+        "precision": 0.628,
+        "recall": 0.628,
+        "f1-score": 0.628,
+        "support": 500.0
+      }
+    },
+    "training_duration_seconds": 264.51
+  },
+  "context_plus_sentence": {
+    "accuracy": 0.554,
+    "precision_macro": 0.5824578129529839,
+    "recall_macro": 0.554,
+    "f1_macro": 0.5105334088384936,
+    "roc_auc": 0.6259680000000001,
+    "per_class": {
+      "non_sarcastic_0": {
+        "precision": 0.5384615384615384,
+        "recall": 0.756,
+        "f1": 0.6289517470881864,
+        "support": 250
+      },
+      "sarcastic_1": {
+        "precision": 0.6264540874444293,
+        "recall": 0.352,
+        "f1": 0.4512820512820513,
+        "support": 250
+      }
+    },
+    "confusion_matrix": {
+      "tn": 189,
+      "fp": 61,
+      "fn": 162,
+      "tp": 88
+    },
+    "classification_report": {
+      "0": {
+        "precision": 0.5384615384615384,
+        "recall": 0.756,
+        "f1-score": 0.6289517470881864,
+        "support": 250.0
+      },
+      "1": {
+        "precision": 0.6264540874444293,
+        "recall": 0.352,
+        "f1-score": 0.4512820512820513,
+        "support": 250.0
+      },
+      "accuracy": 0.554,
+      "macro avg": {
+        "precision": 0.5824578129529839,
+        "recall": 0.554,
+        "f1-score": 0.5401168991851189,
+        "support": 500.0
+      },
+      "weighted avg": {
+        "precision": 0.5824578129529839,
+        "recall": 0.554,
+        "f1-score": 0.5401168991851188,
+        "support": 500.0
+      }
+    },
+    "training_duration_seconds": 263.11
+  },
+  "difference_context_minus_sentence": {
+    "accuracy": -0.074,
+    "precision_macro": -0.0456506095199255,
+    "recall_macro": -0.074,
+    "f1_macro": -0.11645797586574669,
+    "roc_auc": -0.05001599999999984
+  }
+}

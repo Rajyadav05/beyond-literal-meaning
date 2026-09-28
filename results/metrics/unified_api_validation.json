@@ -1,0 +1,13 @@
+{
+  "phase": "10",
+  "api_status": "PASS",
+  "health_status": "ready",
+  "offline_mode": true,
+  "demo_cases_evaluated": 6,
+  "no_fabricated_confidence": true,
+  "performance_seconds": {
+    "total_verification_seconds": 28.9262,
+    "first_request_seconds": 17.5399,
+    "avg_subsequent_request_seconds": 0.5761
+  }
+}

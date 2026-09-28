@@ -1,0 +1,12 @@
+{
+  "phase": "8",
+  "model_path": "models/embeddings",
+  "model_repository": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "offline_inference_verified": true,
+  "determinism_verified": true,
+  "test_cases_evaluated": 8,
+  "load_time_seconds": 0.2778,
+  "total_inference_time_seconds": 1.2269,
+  "avg_inference_time_per_case_ms": 153.36
+}

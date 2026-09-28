@@ -1,0 +1,414 @@
+{
+  "sentence_only": {
+    "top_positive_features_sarcastic": [
+      {
+        "feature": "yes because",
+        "coefficient": 10.491947174072266
+      },
+      {
+        "feature": "clearly",
+        "coefficient": 9.914200782775879
+      },
+      {
+        "feature": "totally",
+        "coefficient": 8.142634391784668
+      },
+      {
+        "feature": "obviously",
+        "coefficient": 8.111058235168457
+      },
+      {
+        "feature": "because",
+        "coefficient": 7.964125633239746
+      },
+      {
+        "feature": "yeah because",
+        "coefficient": 7.641181468963623
+      },
+      {
+        "feature": "how dare",
+        "coefficient": 7.099161624908447
+      },
+      {
+        "feature": "right because",
+        "coefficient": 6.647861003875732
+      },
+      {
+        "feature": "good thing",
+        "coefficient": 5.900249004364014
+      },
+      {
+        "feature": "duh",
+        "coefficient": 5.870997905731201
+      },
+      {
+        "feature": "but thought",
+        "coefficient": 5.747127532958984
+      },
+      {
+        "feature": "gee",
+        "coefficient": 5.60123872756958
+      },
+      {
+        "feature": "yeah fuck",
+        "coefficient": 5.465805530548096
+      },
+      {
+        "feature": "fault",
+        "coefficient": 5.397120952606201
+      },
+      {
+        "feature": "therefore",
+        "coefficient": 5.146174430847168
+      },
+      {
+        "feature": "or anything",
+        "coefficient": 5.1104559898376465
+      },
+      {
+        "feature": "yes let",
+        "coefficient": 5.089386940002441
+      },
+      {
+        "feature": "imagine why",
+        "coefficient": 4.949909687042236
+      },
+      {
+        "feature": "psh",
+        "coefficient": 4.889902591705322
+      },
+      {
+        "feature": "yes sure",
+        "coefficient": 4.884387969970703
+      },
+      {
+        "feature": "yeah let",
+        "coefficient": 4.8284430503845215
+      },
+      {
+        "feature": "have added",
+        "coefficient": 4.784821510314941
+      },
+      {
+        "feature": "didn you",
+        "coefficient": 4.753026008605957
+      },
+      {
+        "feature": "no dude",
+        "coefficient": 4.714566230773926
+      },
+      {
+        "feature": "unbiased",
+        "coefficient": 4.691290378570557
+      }
+    ],
+    "top_negative_features_non_sarcastic": [
+      {
+        "feature": "iirc",
+        "coefficient": -5.509153366088867
+      },
+      {
+        "feature": "fair enough",
+        "coefficient": -5.049802303314209
+      },
+      {
+        "feature": "true but",
+        "coefficient": -5.047159194946289
+      },
+      {
+        "feature": "it but",
+        "coefficient": -4.860080242156982
+      },
+      {
+        "feature": "that but",
+        "coefficient": -4.696239948272705
+      },
+      {
+        "feature": "right but",
+        "coefficient": -4.6112751960754395
+      },
+      {
+        "feature": "but yeah",
+        "coefficient": -4.311224460601807
+      },
+      {
+        "feature": "as well",
+        "coefficient": -4.140768051147461
+      },
+      {
+        "feature": "although",
+        "coefficient": -4.099452495574951
+      },
+      {
+        "feature": "imo",
+        "coefficient": -4.095504283905029
+      },
+      {
+        "feature": "necessarily",
+        "coefficient": -4.047071933746338
+      },
+      {
+        "feature": "doesn mean",
+        "coefficient": -4.045069694519043
+      },
+      {
+        "feature": "totally agree",
+        "coefficient": -4.016242027282715
+      },
+      {
+        "feature": "be surprised",
+        "coefficient": -3.9710867404937744
+      },
+      {
+        "feature": "but still",
+        "coefficient": -3.8955564498901367
+      },
+      {
+        "feature": "afaik",
+        "coefficient": -3.8609390258789062
+      },
+      {
+        "feature": "how so",
+        "coefficient": -3.858586549758911
+      },
+      {
+        "feature": "right now",
+        "coefficient": -3.8305017948150635
+      },
+      {
+        "feature": "all but",
+        "coefficient": -3.7749366760253906
+      },
+      {
+        "feature": "generally",
+        "coefficient": -3.715169668197632
+      },
+      {
+        "feature": "not really",
+        "coefficient": -3.6489408016204834
+      },
+      {
+        "feature": "curious",
+        "coefficient": -3.6428987979888916
+      },
+      {
+        "feature": "not but",
+        "coefficient": -3.5740180015563965
+      },
+      {
+        "feature": "sadly",
+        "coefficient": -3.51678466796875
+      },
+      {
+        "feature": "too but",
+        "coefficient": -3.511802911758423
+      }
+    ]
+  },
+  "context_plus_sentence": {
+    "top_positive_features_sarcastic": [
+      {
+        "feature": "sep but",
+        "coefficient": 22.081645965576172
+      },
+      {
+        "feature": "yes because",
+        "coefficient": 14.597455978393555
+      },
+      {
+        "feature": "sep yeah",
+        "coefficient": 11.706623077392578
+      },
+      {
+        "feature": "obviously",
+        "coefficient": 11.563492774963379
+      },
+      {
+        "feature": "yeah because",
+        "coefficient": 10.177465438842773
+      },
+      {
+        "feature": "sep because",
+        "coefficient": 9.785722732543945
+      },
+      {
+        "feature": "forgot the",
+        "coefficient": 9.655492782592773
+      },
+      {
+        "feature": "duh",
+        "coefficient": 9.527099609375
+      },
+      {
+        "feature": "totally",
+        "coefficient": 9.136589050292969
+      },
+      {
+        "feature": "dropped this",
+        "coefficient": 8.515557289123535
+      },
+      {
+        "feature": "clearly",
+        "coefficient": 8.435802459716797
+      },
+      {
+        "feature": "you dropped",
+        "coefficient": 7.874079704284668
+      },
+      {
+        "feature": "shitlord",
+        "coefficient": 7.6113786697387695
+      },
+      {
+        "feature": "forgot",
+        "coefficient": 7.599059104919434
+      },
+      {
+        "feature": "but but",
+        "coefficient": 7.174511432647705
+      },
+      {
+        "feature": "sep yea",
+        "coefficient": 7.10433292388916
+      },
+      {
+        "feature": "how dare",
+        "coefficient": 6.904710292816162
+      },
+      {
+        "feature": "right because",
+        "coefficient": 6.805724143981934
+      },
+      {
+        "feature": "sep cause",
+        "coefficient": 6.744979381561279
+      },
+      {
+        "feature": "sep wow",
+        "coefficient": 6.733419418334961
+      },
+      {
+        "feature": "sep nah",
+        "coefficient": 6.261397361755371
+      },
+      {
+        "feature": "racist",
+        "coefficient": 6.250994682312012
+      },
+      {
+        "feature": "amirite",
+        "coefficient": 6.233463287353516
+      },
+      {
+        "feature": "oh but",
+        "coefficient": 6.2114739418029785
+      },
+      {
+        "feature": "sep clearly",
+        "coefficient": 6.145572662353516
+      }
+    ],
+    "top_negative_features_non_sarcastic": [
+      {
+        "feature": "iirc",
+        "coefficient": -5.340982913970947
+      },
+      {
+        "feature": "but",
+        "coefficient": -5.2584004402160645
+      },
+      {
+        "feature": "sep added",
+        "coefficient": -4.850818634033203
+      },
+      {
+        "feature": "sep read",
+        "coefficient": -4.848856449127197
+      },
+      {
+        "feature": "sep most",
+        "coefficient": -4.616517543792725
+      },
+      {
+        "feature": "fair enough",
+        "coefficient": -4.6078782081604
+      },
+      {
+        "feature": "forgot about",
+        "coefficient": -4.548454761505127
+      },
+      {
+        "feature": "sep would",
+        "coefficient": -4.542646408081055
+      },
+      {
+        "feature": "right now",
+        "coefficient": -4.430148124694824
+      },
+      {
+        "feature": "lol",
+        "coefficient": -4.387697219848633
+      },
+      {
+        "feature": "yeah was",
+        "coefficient": -4.369986057281494
+      },
+      {
+        "feature": "context obviously",
+        "coefficient": -4.332390785217285
+      },
+      {
+        "feature": "sep fair",
+        "coefficient": -4.249131679534912
+      },
+      {
+        "feature": "sep honestly",
+        "coefficient": -4.238059997558594
+      },
+      {
+        "feature": "sep ve",
+        "coefficient": -3.957394599914551
+      },
+      {
+        "feature": "thanks",
+        "coefficient": -3.9449098110198975
+      },
+      {
+        "feature": "sep agreed",
+        "coefficient": -3.8900794982910156
+      },
+      {
+        "feature": "context totally",
+        "coefficient": -3.8842110633850098
+      },
+      {
+        "feature": "not sure",
+        "coefficient": -3.875878095626831
+      },
+      {
+        "feature": "sep while",
+        "coefficient": -3.822500228881836
+      },
+      {
+        "feature": "sep lot",
+        "coefficient": -3.7942044734954834
+      },
+      {
+        "feature": "oh god",
+        "coefficient": -3.7573752403259277
+      },
+      {
+        "feature": "never said",
+        "coefficient": -3.7572696208953857
+      },
+      {
+        "feature": "racist sep",
+        "coefficient": -3.7278623580932617
+      },
+      {
+        "feature": "context omg",
+        "coefficient": -3.6938164234161377
+      }
+    ]
+  }
+}

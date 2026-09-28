@@ -1,0 +1,94 @@
+{
+  "dataset": "SemEval-2022 Task 2 (EN)",
+  "train_size": 2661,
+  "test_size": 333,
+  "seed": 42,
+  "sentence_only": {
+    "accuracy": 0.8318318318318318,
+    "precision_macro": 0.8445479641131814,
+    "recall_macro": 0.8254563233376793,
+    "f1_macro": 0.8277925531914894,
+    "roc_auc": 0.9110169491525423,
+    "confusion_matrix": {
+      "tn": 164,
+      "fp": 13,
+      "fn": 43,
+      "tp": 113
+    },
+    "classification_report": {
+      "0": {
+        "precision": 0.7922705314009661,
+        "recall": 0.9265536723163842,
+        "f1-score": 0.8541666666666666,
+        "support": 177.0
+      },
+      "1": {
+        "precision": 0.8968253968253969,
+        "recall": 0.7243589743589743,
+        "f1-score": 0.8014184397163121,
+        "support": 156.0
+      },
+      "accuracy": 0.8318318318318318,
+      "macro avg": {
+        "precision": 0.8445479641131814,
+        "recall": 0.8254563233376793,
+        "f1-score": 0.8277925531914894,
+        "support": 333.0
+      },
+      "weighted avg": {
+        "precision": 0.841251189077276,
+        "recall": 0.8318318318318318,
+        "f1-score": 0.8294557855728069,
+        "support": 333.0
+      }
+    }
+  },
+  "context_plus_sentence": {
+    "accuracy": 0.8228228228228228,
+    "precision_macro": 0.8275175033517056,
+    "recall_macro": 0.8185028248587571,
+    "f1_macro": 0.8202289342934788,
+    "roc_auc": 0.9030131826741996,
+    "confusion_matrix": {
+      "tn": 157,
+      "fp": 20,
+      "fn": 39,
+      "tp": 117
+    },
+    "classification_report": {
+      "0": {
+        "precision": 0.8010204081632653,
+        "recall": 0.8870056497175142,
+        "f1-score": 0.8418230563002681,
+        "support": 177.0
+      },
+      "1": {
+        "precision": 0.8540145985401459,
+        "recall": 0.75,
+        "f1-score": 0.7986348122866894,
+        "support": 156.0
+      },
+      "accuracy": 0.8228228228228228,
+      "macro avg": {
+        "precision": 0.8275175033517056,
+        "recall": 0.8185028248587571,
+        "f1-score": 0.8202289342934788,
+        "support": 333.0
+      },
+      "weighted avg": {
+        "precision": 0.8258465153668489,
+        "recall": 0.8228228228228228,
+        "f1-score": 0.8215907257713844,
+        "support": 333.0
+      }
+    }
+  },
+  "context_delta": {
+    "accuracy": -0.009009009009009028,
+    "precision_macro": -0.017030460761475852,
+    "recall_macro": -0.006953498478922127,
+    "f1_macro": -0.0075636188980106045,
+    "roc_auc": -0.008003766478342667
+  },
+  "notes": "Full-data TF-IDF + Logistic Regression baseline on SemEval-2022 Task 2 English dataset."
+}
